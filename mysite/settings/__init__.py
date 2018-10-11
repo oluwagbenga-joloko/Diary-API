@@ -1,10 +1,10 @@
 from decouple import config
 import os
 
-
-if config("ENV") == "development":
+env = config("ENV", "")
+if env == "development":
     from .development import *
-elif config("ENV") =="production":
+elif env =="production":
     from .production import *
 else:
     from .base import *
