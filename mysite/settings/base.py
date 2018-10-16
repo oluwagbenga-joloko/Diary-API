@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    "diary.apps.DiaryConfig"
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'diary.pagination.CustomPagination',
+    'PAGE_SIZE': 5
 }
 
 JWT_AUTH = {
