@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from .views import RootView
 
 urlpatterns = [
+    url(r'^$', RootView.as_view()),
     url(r'^users/', include('users.urls')),
-    url(r'^entry/', include('diary.urls')),
-
+    url(r'^entries/', include('diary.urls')),
     path('admin/', admin.site.urls),
 ]

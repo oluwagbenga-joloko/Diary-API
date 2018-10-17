@@ -12,7 +12,7 @@ class EntrySerializer(serializers.ModelSerializer):
     
     def validate(self, data):
         if self.instance:
-            if self.instance.created_at + timedelta(seconds=24) < timezone.now():
+            if self.instance.created_at + timedelta(hours=24) < timezone.now():
                 raise serializers.ValidationError("cannot edit entry after 24 hours")
         return data
         
