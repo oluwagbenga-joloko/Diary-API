@@ -1,0 +1,15 @@
+dataclasses==0.6
+Django==2.1.2
+django-filter==2.0.0
+django-polls==0.1
+djangorestframework==3.8.2
+djongo==1.2.30
+Markdown==3.0.1
+mongoengine==0.15.3
+psycopg2==2.7.5
+Pygments==2.2.0
+pymongo==3.7.1
+python-decouple==3.1
+pytz==2018.5
+six==1.11.0
+sqlparse==0.2.4
