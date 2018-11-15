@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'users.apps.UsersConfig',
     "diary.apps.DiaryConfig"
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,7 +138,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'diary.pagination.CustomPagination',
-    'PAGE_SIZE': 5
+    'PAGE_SIZE': 5,
+    'DEFAULT_RENDERER_CLASSES': (
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+    ),
+
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+    ),
 }
 
 JWT_AUTH = {
@@ -178,3 +187,9 @@ JWT_AUTH = {
     'JWT_AUTH_COOKIE': None,
 
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+APPEND_SLASH = False
+
+GOOGLE_CLIENT_ID=config("GOOGLE_CLIENT_ID", default="xh4-o3oufraf4j")
+DEFAULT_PASSWORD=config("DEFAULT_PASSWORD")

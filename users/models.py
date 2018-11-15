@@ -44,6 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    provider = models.TextField(max_length=60, default="default")
     date_of_birth = models.DateField(blank=True, null=True)
 
     USERNAME_FIELD = 'email'

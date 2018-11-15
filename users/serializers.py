@@ -10,8 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ('created_at', 'updated_at', 'is_staff')
         extra_kwargs = {'password': {'write_only': True}}
-
-    def create(self, validated_data):
+    
+    def create_helper(self, validated_data):
         email = User.objects.normalize_email(validated_data.pop('email'))
         password = validated_data.pop('password')
         user = User(
@@ -19,6 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
             **validated_data
         )
         user.set_password(password)
+        return user
+
+    def create(self, validated_data):
+        user = self.create_helper(validated_data)
         user.save()
         return user
     
@@ -33,6 +37,11 @@ class UserSerializer(serializers.ModelSerializer):
             setattr(user, attr, value)
         user.save()
         return user
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(max_length=200,write_only=True)
+    
 
 
 
