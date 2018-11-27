@@ -26,19 +26,20 @@ class EntryList(ListCreateAPIView):
         min_created_at = self.request.query_params.get('min_created_at', None)
         max_created_at =  self.request.query_params.get('max_created_at', None)
 
-        if order in ["-created_at","created_at"]:
+        if order in ["-created_at", "created_at"]:
             queryset = queryset.order_by(order)
 
         if min_created_at:
             try:
-                datetime.strptime(min_created_at,"%Y-%m-%d")
+                print('hererer')
+                datetime.strptime(min_created_at,"%Y-%m-%dT%H:%M:%S")
                 queryset = queryset.filter(created_at__gte=min_created_at)
             except ValueError:
                 pass
 
         if max_created_at:
             try:
-                datetime.strptime(max_created_at, "%Y-%m-%d")
+                datetime.strptime(max_created_at, "%Y-%m-%dT%H:%M:%S")
                 queryset = queryset.filter(created_at__lte=max_created_at)
             except ValueError:
                 pass
