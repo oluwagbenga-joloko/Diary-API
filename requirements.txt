@@ -1,5 +1,5 @@
 dataclasses==0.6
-Django==2.1.11
+Django==2.2.7
 django-filter==2.0.0
 django-polls==0.1
 djangorestframework==3.9.1
