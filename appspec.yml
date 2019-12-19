@@ -3,3 +3,16 @@ os: linux
 files:
   - source: /
     destination: /diary_api
+hooks:
+  AfterInstall:
+    - location: scripts/create_enviroment
+      timeout: 1000
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server
+      timeout: 1000
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 1000
+      runas: root
