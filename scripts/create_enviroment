@@ -1,8 +1,6 @@
 #!/bin/bash
-command cd /diary_api
-pipenv shell
+cd /home/ec2-user/diary_api
 pipenv install
-python scripts/create_env.py
-python manage.py makemigrations
-python manage.py migrate
-. /home/ec2-user/.local/share/virtualenvs/diary_api-i7Bk5txq/bin/activate
+pipenv run python scripts/create_env.py
+pipenv run python manage.py makemigrations
+pipenv run python manage.py migrate
