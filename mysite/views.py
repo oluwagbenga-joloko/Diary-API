@@ -9,7 +9,6 @@ class RootView(APIView):
 
     def get(self, request):
         return Response({
-            "message": "welcome",
             "entries":  reverse('entry-list', request=request),
             "users": reverse('user-list', request=request)
         })
