@@ -9,6 +9,7 @@ def create_env_vars():
         "=\n"), env_file_sample.readlines()))
     env_file_sample.close()
     env_file = open('./.env', 'w')
+    env_file.write("ENV=production\n")
     for var in env_vars:
         response = client.get_parameter(Name=f'/DiaryApp/production/{var}')
         env_file.write(f'{var}={response["Parameter"]["Value"]}\n')

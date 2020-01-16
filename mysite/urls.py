@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^$', RootView.as_view()),
     url(r'^users/', include('users.urls')),
     url(r'^entries/', include('diary.urls')),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 ]
