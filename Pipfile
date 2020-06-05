@@ -8,7 +8,7 @@ autopep8 = "*"
 
 [packages]
 dataclasses = "==0.6"
-django = "==2.1.11"
+django = "==2.2.13"
 django-filter = "==2.0.0"
 django-polls = "==0.1"
 djongo = "==1.2.30"
